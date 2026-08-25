@@ -20,7 +20,9 @@ Pass:
 Fail:
 - Fails to compute balances accurately which leads to accounting discrepancies
 - Allows overdraft without the supervision of Dean
-
+  
+#### Rationale:
+Without it, grant funds could be overspent with no accountability. It directly enables the Research Dean's oversight role.
 
 ### 2. FR-002 [High Priority]: Co-Author Approval Workflow: 
 #### Description:
@@ -37,6 +39,9 @@ Fail:
 - The system fails to notify any co-author or some co-authors out of all the co-authors
 - The system fails to take explicit approval of each co-author and marks the publication "Confirmed" anyway
 
+#### Rationale:
+Publication metrics attributed to a faculty member must reflect authorship. Without an approval step, integrity of publication would be collapsed.
+
 ### 3. FR-003 [Medium Priority]: Publication Indexing and Citation Update:
 #### Description:
 - Allows faculty to register a publication and periodically update citation counts, either manually or via an external index lookup
@@ -44,12 +49,15 @@ Fail:
 Pass:
 - The system successfully allows the faculty to update citation counts
 - The external index lookup is fast and work with no problems
-- There exists a graceful fallback machanism to update citation counts manually if the lookup doesn't work
+- There exists a graceful fallback mechanism to update citation counts manually if the lookup doesn't work
 
 Fail:
 - The system fails to register the publication
 - The pipeline to load the external index lookup is broken or suboptimal  
 - There exists no mechanism to update citation manually
+
+#### Rationale:
+This is a mechanism for capturing and maintaining the data. This is useful for both faculty evaluation and department-level reporting.
 
 ### 4. FR-004 [Medium Priority]: Fund Burn-Up Analytics:
 #### Description:
@@ -64,6 +72,9 @@ Fail:
 - The model mispredicts cumulative expenditures, or predicts expenditures with lower accuracy
 - No one from the faculty can see the data
 
+#### Rationale:
+The Dean needs an aggregated and time-based view to spot underspending, overspending, or funding risk across grants before deadlines or renewal cycles.
+
 ### 5. FR-005 [Low Priority]: Grant Application/Renewal Submission:
 #### Description:
 - The system shall let a Faculty Researcher submit a new grant application or renewal request, something like an ATS resume filter system
@@ -72,11 +83,15 @@ Fail:
 #### Acceptance Criteria:
 Pass:
 - The system successfully routes the application or renewal request to the Dean
-- The system allows applications which contain detailed criteria and rejects those which aren't detauled enough
+- The system allows applications which contain detailed criteria and rejects those which aren't detailed enough
 
 Fail:
 - The system fails to route the application to the Dean
 - The system accepts vague or incomplete details
+
+#### Rationale:
+This mechanism gives the Dean a formal gate to approve funding before money is committed.
+
 
 ## Non-Functional Requirements:
 
@@ -92,6 +107,10 @@ Fail:
 - Benchmarking tests do not reach target latency
 - Security tests fail the security standards
 
+#### Rationale:
+The dean needs a tamper-proof trail to satisfy funding-body compliance with internal governance and to resolve disputes.
+
+
 ### NFR-002 [Type: Usability]: Dashboard Analytics
 #### Description:
 - The system shall render the fund burn-up analytics dashboard (FR-004) within a defined time threshold.
@@ -102,3 +121,5 @@ Pass:
 Fail:
 - Render time exceeds 5 seconds
 
+#### Rationale:
+Slow-loading dashboards undermine usability and discourage regular use, especially near grant reporting deadlines.

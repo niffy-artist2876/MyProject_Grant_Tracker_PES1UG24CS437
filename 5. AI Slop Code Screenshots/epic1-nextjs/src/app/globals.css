@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f7f5;
+  --surface: #ffffff;
+  --foreground: #1c1c1a;
+  --muted: #6b6b66;
+  --border: #e3e3de;
+  --accent: #1f4e8c;
+  --accent-fg: #ffffff;
+  --ok: #1e7a46;
+  --ok-bg: #e5f4ea;
+  --warn: #8a5a00;
+  --warn-bg: #fdf1d8;
+  --bad: #b3261e;
+  --bad-bg: #fbe6e4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121211;
+    --surface: #1b1b1a;
+    --foreground: #ececea;
+    --muted: #a0a09a;
+    --border: #2e2e2b;
+    --accent: #7aa7e6;
+    --accent-fg: #0d1a2b;
+    --ok: #6fd39a;
+    --ok-bg: #133523;
+    --warn: #f0c060;
+    --warn-bg: #3a2c0c;
+    --bad: #f2948d;
+    --bad-bg: #401816;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-border bg-surface p-5;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium;
+  }
+  .input {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-opacity disabled:opacity-50;
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-background disabled:opacity-50;
+  }
+  .badge {
+    @apply inline-block rounded px-2 py-0.5 text-xs font-semibold tracking-wide;
+  }
+  .badge-APPROVED {
+    color: var(--ok);
+    background: var(--ok-bg);
+  }
+  .badge-PENDING {
+    color: var(--warn);
+    background: var(--warn-bg);
+  }
+  .badge-REJECTED {
+    color: var(--bad);
+    background: var(--bad-bg);
+  }
+  .table {
+    @apply w-full text-left text-sm;
+  }
+  .table th {
+    @apply border-b border-border px-3 py-2 font-medium text-muted;
+  }
+  .table td {
+    @apply border-b border-border px-3 py-2.5 align-top;
+  }
+}

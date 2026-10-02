@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Office lock files
+~$*
+
+# Dependencies and build output
+node_modules/
+.next/
+*.tsbuildinfo
+
+# Local databases
+*.db
+*.db-shm
+*.db-wal
+
+# Logs and secrets
+*.log
+.env*
